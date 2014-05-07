@@ -1,0 +1,32 @@
+<?php
+/**
+ * Default layout
+ * @var $this Phalcon\Mvc\View\Engine\Php
+ */
+?>
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <?= \Phalcon\Tag::getTitle(); ?>
+</head>
+<body>
+
+<?php //$this->partial('../../../Common/Templates/Sidebar'); ?>
+
+<?php foreach($this->flashSession->getMessages() as $type => $messages): ?>
+  <?php foreach($messages as $message): ?>
+    <p class="flash-<?= $type ?>"><?= $message ?></p>
+  <?php endforeach; ?>
+<?php endforeach; ?>
+
+<?php echo $this->getContent(); ?>
+
+
+<?php
+// Include the footer view
+$this->partial('../../Common/Views/Footer');
+?>
+</body>
+</html>
